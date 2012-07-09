@@ -35,11 +35,12 @@ Styling
 </div>
 ```
 
-Zusätzlich bekommt jedes `div.juiceSliderItem` die Klasse `hover` beim Überfahren mit der Maus
+Zusätzlich bekommt jedes `div.juiceSliderItem` die Klasse `hover` beim Überfahren mit der Maus,
 sowie die Klasse `active`, falls das Element expandiert ist.
 
 
 Contact, Licence
 ----------------
 Lizenz: LGPL
+
 Entwickler: Christoph Wiechert, [4ward.media](http://www.4wardmedia.de)
