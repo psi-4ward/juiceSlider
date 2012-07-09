@@ -1,0 +1,18 @@
+<script>
+window.addEvent('domready',function(){
+	myjuiceslider = new JuiceSLider(document.id('<?php echo $this->containerID;?>'),{
+		closedWidth:<?php echo $this->juiceSliderClosedWidth; ?>,
+		'fxDuration':<?php echo $this->juiceSliderDuration; ?>,
+		'fxTransition':'<?php echo $this->juiceSliderTransition; ?>',
+		'initialExpand':<?php echo $this->juiceSliderInitialExpanded; ?>
+	});
+});
+</script>
+
+<div class="<?php echo $this->class; ?> juiceslider block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+<?php if ($this->headline): ?>
+
+<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+<?php endif; ?>
+
+
