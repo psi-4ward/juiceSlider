@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
 
 
 
@@ -26,9 +26,9 @@ class ContentJuiceSliderStart extends ContentElement
 		}
 
 		return parent::generate();
-	}	
-	
-	
+	}
+
+
 	/**
 	 * Generate content element
 	 */
@@ -50,3 +50,4 @@ class ContentJuiceSliderStart extends ContentElement
 		$this->Template->containerID = $this->cssID[0];
 	}
 }
+
