@@ -5,8 +5,9 @@ var JuiceSLider = new Class({
 	options:
 	{
 		closedWidth: 50,				// width of an closed element
-		initialExpand: -1, 			// which item to expand initially, use -1 to expand the last item or false to keep all collapsed
+		initialExpand: -1, 				// which item to expand initially, use -1 to expand the last item or false to keep all collapsed
 										// you can also use the HTTP-GET parameter juiceSlider: page.html?juiceSlider=2 to expand element 3
+		hideToggler: true,
 		fxDuration: 500,
 		fxTransition: 'quad:in:out'
 	},
@@ -43,15 +44,13 @@ var JuiceSLider = new Class({
 			'height': '100%',
 			'overflow': 'hidden',
 			'float':'left',
-			'width':this.options.closedWidth+'px'
+			'position': 'relative',
+			'width':this.options.closedWidth
 		});
 
 		// register click and hover events
 		this.items.each(function(el,index){
 			el.addEvents({
-				'click':function(){
-					this.expand(index);
-				}.bind(this),
 				'mouseenter': function(){
 					el.addClass('hover');
 				},
@@ -59,6 +58,25 @@ var JuiceSLider = new Class({
 					el.removeClass('hover');
 				}
 			});
+
+			// add toggler div
+			new Element('div',{
+				'class': 'juiceSliderToggler',
+				'events': {
+					'click':function(){
+						this.expand(index);
+					}.bind(this)
+				},
+				'styles': {
+					'width': this.options.closedWidth,
+					'height': '100%',
+					'position': 'absolute',
+					'top':0,
+					'left':0
+				}
+
+			}).inject(el,'top');
+
 		}.bind(this));
 
 		// expand initial item
@@ -85,6 +103,21 @@ var JuiceSLider = new Class({
 
 		this.items.removeClass('active');
 		this.items[index].addClass('active');
+
+		if(this.options.hideToggler)
+		{
+			this.items.getElements('.juiceSliderToggler').each(function(el,togglerIndex){
+				if(togglerIndex == index)
+				{
+					el.morph({'opacity':0,'width':0});
+
+				}
+				else
+				{
+					el.morph({'opacity':1,'width':this.options.closedWidth});
+				}
+			}.bind(this));
+		}
 
 		// generate matrix
 		var effectMatrix = {};

@@ -42,9 +42,12 @@ sowie die Klasse `active`, falls das Element expandiert ist.
 CSS-Basics
 ----------
 ```
-.juiceSliderItem {background-color:#FFF;border-left:3px solid #F0F}
-.juiceSliderItem.hover {background-color:#defae5}
-.juiceSliderItem.active {background-color:#dee4fa}
+.juiceSliderItem {background-color:#FFF;border-left:3px solid #F0F;}
+.juiceSliderItem.hover {background-color:#defae5;}
+.juiceSliderItem.active {background-color:#dee4fa;}
+
+/* if you use togglers */
+.juiceSliderToggler {cursor:pointer;background-color:d96808#;}
 ```
 
 

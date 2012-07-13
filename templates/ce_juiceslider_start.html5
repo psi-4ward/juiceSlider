@@ -1,6 +1,6 @@
 <script>
 window.addEvent('domready',function(){
-	myjuiceslider = new JuiceSLider(document.id('<?php echo $this->containerID;?>'),{
+	new JuiceSLider(document.id('<?php echo $this->containerID;?>'),{
 		closedWidth:<?php echo $this->juiceSliderClosedWidth; ?>,
 		'fxDuration':<?php echo $this->juiceSliderDuration; ?>,
 		'fxTransition':'<?php echo $this->juiceSliderTransition; ?>',

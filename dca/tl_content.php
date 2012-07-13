@@ -46,8 +46,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['juiceSliderTransition'] = array
 	'exclude'                 => true,
 	'inputType'               => 'select',
 	'default'				  => 'quad',
-	'options'				  => array('linear'=>'linear','quad:in:out'=>'quad:in:out','cubic:in:out'=>'cubic:in:out','quart:in:out'=>'quart:in:out','quint:in:out'=>'quint:in:out',
-									   'expo:in:out'=>'expo:in:out','circ:in:out'=>'circ:in:out','sine:in:out'=>'sine:in:out','back:in:out'=>'back:in:out','bounce:in:out'=>'bounce:in:out','elastic:in:out'=>'elastic:in:out'),
+	'options_callback'		  => array('tl_content_juiceSlider','getTransitions'),
 	'eval'                    => array('mandatory'=>true,'tl_class'=>'w50')
 );
 $GLOBALS['TL_DCA']['tl_content']['fields']['juiceSliderInitialExpanded'] = array
@@ -71,6 +70,24 @@ class tl_content_juiceSlider extends System
 	{
 		parent::__construct();
 		$this->import('Database');
+	}
+
+
+	public function getTransitions()
+	{
+		$arrResult = array();
+
+		foreach(array('linear','quad','cubic','quart','quint','expo','circ','back','sine','bounce','elastic') as $t)
+		{
+			$arrResult[$t] = $t;
+			if($t == 'linear') continue;
+
+			$arrResult[$t.':in'] = $t.':in';
+			$arrResult[$t.':out'] = $t.':out';
+			$arrResult[$t.':in:out'] = $t.':in:out';
+		}
+
+		return $arrResult;
 	}
 
 
