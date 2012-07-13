@@ -32,15 +32,14 @@ class ContentJuiceSliderEnd extends ContentElement
 		}
 
 		return parent::generate();
-	}	
+	}
 
 
 	/**
 	 * Compile content element
-	 */	protected function compile()
+	 */
+	protected function compile()
 	{
 	}
 }
 
-
-?>

@@ -39,6 +39,15 @@ Zusätzlich bekommt jedes `div.juiceSliderItem` die Klasse `hover` beim Überfah
 sowie die Klasse `active`, falls das Element expandiert ist.
 
 
+CSS-Basics
+----------
+```
+.juiceSliderItem {background-color:#FFF;border-left:3px solid #F0F}
+.juiceSliderItem.hover {background-color:#defae5}
+.juiceSliderItem.active {background-color:#dee4fa}
+```
+
+
 Contact, Licence
 ----------------
 Lizenz: LGPL

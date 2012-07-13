@@ -1,16 +1,21 @@
-<?php if(!defined('TL_ROOT')) {die('You cannot access this file directly!');
-}
+<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
 
 /**
  * @copyright 4ward.media 2012 <http://www.4wardmedia.de>
  * @author Christoph Wiechert <wio@psitrax.de>
  */
 
+
+/**
+ * Palettes
+ */
 $GLOBALS['TL_DCA']['tl_content']['palettes']['juiceSliderStart'] 	= '{type_legend},type;{juiceSliderLegend},juiceSliderSize,juiceSliderClosedWidth,juiceSliderInitialExpanded,juiceSliderDuration,juiceSliderTransition;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['juiceSliderEnd'] 		= '{type_legend},type';
 
 
-
+/**
+ * Fields
+ */
 $GLOBALS['TL_DCA']['tl_content']['fields']['juiceSliderDuration'] = array
 (
 	'label'                   => &$GLOBALS['TL_LANG']['tl_content']['juiceSliderDuration'],
@@ -60,7 +65,7 @@ $GLOBALS['TL_DCA']['tl_content']['config']['ondelete_callback'][] = array('tl_co
 
 
 
-class tl_content_juiceSlider extends System 
+class tl_content_juiceSlider extends System
 {
 	public function __construct()
 	{
@@ -76,11 +81,11 @@ class tl_content_juiceSlider extends System
 	{
 		// only for juiceSlider elements
 		if($dc->activeRecord->type != 'juiceSliderStart' && $dc->activeRecord->type != 'juiceSliderEnd') return;
-		
+
 		// only if theres no related element
 		if($dc->activeRecord->juiceSliderRelatedCE != 0) return;
-		
-		
+
+
 		if($dc->activeRecord->type == 'juiceSliderStart')
 		{
 			$arrSet = array
@@ -122,8 +127,8 @@ class tl_content_juiceSlider extends System
 		$this->Database->prepare('UPDATE tl_content SET juiceSliderRelatedCE=? WHERE id=?')
 					->execute($objErg->insertId,$dc->id);
 	}
-	
-	
+
+
 	/**
 	 * Also delete the related start/end element
 	 */
@@ -131,11 +136,12 @@ class tl_content_juiceSlider extends System
 	{
 		// only for juiceSlider elements
 		if($dc->activeRecord->type != 'juiceSliderStart' && $dc->activeRecord->type != 'juiceSliderEnd') return;
-		
+
 		if($dc->activeRecord->id > 0)
 		{
 			$this->Database->prepare('DELETE FROM tl_content WHERE pid=? AND juiceSliderRelatedCE=? LIMIT 1')
 					->execute($dc->activeRecord->pid,$dc->activeRecord->id);
 		}
 	}
-} 
+}
+
