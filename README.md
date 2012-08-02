@@ -21,15 +21,19 @@ Styling
 ```html
 <div class="juiceSlider">
   <div class="juiceSliderItem juiceSliderItem0 first">
+  	<div class="juiceSliderToggler"></div>
     <div class="ce_text">...</div>
   </div>
   <div class="juiceSliderItem juiceSliderItem1">
+  	<div class="juiceSliderToggler"></div>
     <div class="ce_text">...</div>
   </div>
   <div class="juiceSliderItem juiceSliderItem2">
+  	<div class="juiceSliderToggler"></div>
     <div class="ce_text">...</div>
   </div>
   <div class="juiceSliderItem juiceSliderItem3 last">
+  	<div class="juiceSliderToggler"></div>
     <div class="ce_text">...</div>
   </div>
 </div>
